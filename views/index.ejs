@@ -1,0 +1,123 @@
+<html>
+
+<head>
+
+    <title>Список завдань</title>
+
+    <style>
+
+        body {
+            background-color: #bfbfbf;
+            font-family: "Courier New", monospace;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 600px;
+            margin: 40px auto;
+        }
+
+        input, button {
+            font-family: "Courier New", monospace;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        h1 {
+            font-size: 34px;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-top: 30px;
+        }
+
+        li {
+            list-style: none;
+            font-size: 20px;
+            margin: 6px 0;
+        }
+
+        ul {
+            padding-left: 0;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Список завдань</h1>
+
+        <form action="/addnewtask" method="POST">
+
+            <input type="text"
+                   name="newtask"
+                   placeholder="Введіть нове завдання">
+
+            <button type="submit">
+                Додати завдання
+            </button>
+
+            <h2>Додані завдання</h2>
+
+            <ul>
+
+                <% for(var i = 0; i < task.length; i++) { %>
+
+                    <li>
+
+                        <input type="checkbox"
+                               name="check"
+                               value="<%= task[i] %>">
+
+                        <%= task[i] %>
+
+                    </li>
+
+                <% } %>
+
+            </ul>
+
+            <button formaction="/movetocompletetask"
+                    type="submit">
+
+                Виконати завдання
+
+            </button>
+
+            <button formaction="/deletetask"
+                    type="submit">
+
+                Видалити завдання
+
+            </button>
+
+            <h2>Виконані завдання</h2>
+
+            <ul>
+
+                <% for(var i = 0; i < complete.length; i++) { %>
+
+                    <li>
+
+                        <input type="checkbox" checked>
+
+                        <%= complete[i] %>
+
+                    </li>
+
+                <% } %>
+
+            </ul>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
